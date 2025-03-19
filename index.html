@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicite Agora! - Diego Cotas</title>
+    <style>
+        body {
+            font-family: monospace;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: black;
+            color: green;
+            overflow: hidden;
+        }
+        #conteudo {
+            display: block;
+            color: white;
+            background-color: black;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #logs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-family: monospace;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            line-height: 1.5;
+        }
+        .log {
+            color: lime;
+            display: block;
+            width: 100%;
+            white-space: nowrap;
+            word-wrap: break-word;
+            margin: 5px 0;
+        }
+        .log1 {
+            color: lime;
+        }
+        .log2 {
+            color: cyan;
+        }
+        .log3 {
+            color: yellow;
+        }
+        .log4 {
+            color: red;
+        }
+        .log5 {
+            color: white;
+        }
+        img {
+            width: 150px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .fade-out {
+            animation: fadeOut 2s ease-in;
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .content {
+            display: none;
+        }
+        .icons img {
+            width: 40px;
+            margin: 0 10px;
+        }
+        h1 {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 3em;
+            animation: hackerEffect 0.1s infinite alternate;
+        }
+        @keyframes hackerEffect {
+            0% { color: green; text-shadow: 0 0 10px lime, 0 0 20px lime, 0 0 30px lime, 0 0 40px lime, 0 0 50px lime, 0 0 75px lime, 0 0 100px lime; }
+            50% { color: yellow; text-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow, 0 0 50px yellow, 0 0 75px yellow, 0 0 100px yellow; }
+            100% { color: red; text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 75px red, 0 0 100px red; }
+        }
+    </style>
+</head>
+<body>
+    <div id="conteudo">
+        <div id="logs"></div>
+        <div id="presentation" class="content">
+            <div id="saudacao"></div>
+            <h1 class="fade-in">Solicite agora mesmo um serviço profissional hacking</h1>
+            
+            <!-- Nome e logo do Instagram -->
+            <div class="icons fade-in">
+                <a href="https://www.instagram.com/diego_cotas?igsh=MTI4a2NhZG41ZWV3dw==">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/480px-Instagram_logo_2022.svg.png" alt="Instagram">
+                    <span style="font-size: 1.5em; color: white;">Diego Cotas</span>
+                </a>
+            </div>
+            
+            <!-- Contatos -->
+            <div class="icons fade-in" style="margin-top: 20px;">
+                <span style="font-size: 1.2em; color: white;">WhatsApp: 19992048619</span><br>
+                <span style="font-size: 1.2em; color: white;">WhatsApp: 11956199297</span><br>
+                <span style="font-size: 1.2em; color: white;">Email: cotasdiego@gmail.com</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        function saudacao() {
+            const hora = new Date().getHours();
+            let saudacaoMsg = "";
+            if (hora >= 6 && hora < 12) {
+                saudacaoMsg = "Bom dia! Como posso ajudá-lo?";
+            } else if (hora >= 12 && hora < 18) {
+                saudacaoMsg = "Boa tarde! Estou à disposição para qualquer dúvida.";
+            } else {
+                saudacaoMsg = "Boa noite! Como posso ajudá-lo hoje?";
+            }
+            document.getElementById("saudacao").innerHTML = saudacaoMsg;
+        }
+
+        const logs = [
+            "[+] Iniciando o sistema...",
+            "[+] Conectando-se ao servidor remoto...",
+            "[+] Acesso autorizado. Iniciando análise de rede...",
+            "[+] Detectando vulnerabilidades...",
+            "[+] Teste de penetração em andamento...",
+            "[+] Comprometendo sistema...",
+            "[+] Finalizado: acesso completo estabelecido.",
+            "[+] Encerrando sessão."
+        ];
+
+        let currentLog = 0;
+        let logElement = document.getElementById("logs");
+
+        function digitarLog() {
+            if (currentLog < logs.length) {
+                let log = logs[currentLog];
+                let logElement = document.createElement("p");
+                logElement.classList.add("log");
+
+                if (currentLog % 5 === 0) logElement.classList.add("log1");
+                else if (currentLog % 5 === 1) logElement.classList.add("log2");
+                else if (currentLog % 5 === 2) logElement.classList.add("log3");
+                else if (currentLog % 5 === 3) logElement.classList.add("log4");
+                else logElement.classList.add("log5");
+
+                logElement.textContent = log;
+                logElement.style.opacity = 0;
+                logElement.style.transition = "opacity 1s ease-in-out";
+                logElement.style.opacity = 1;
+                logElement.style.margin = "10px 0";
+                document.getElementById("logs").appendChild(logElement);
+                currentLog++;
+                setTimeout(digitarLog, 1500);
+            } else {
+                setTimeout(() => {
+                    document.getElementById("logs").innerHTML = '';
+                    document.getElementById("logs").classList.add("fade-out");
+                }, 1000);
+
+                setTimeout(() => {
+                    saudacao();
+                    document.querySelectorAll(".content").forEach(el => el.style.display = "block");
+                    document.getElementById("presentation").classList.add("fade-in");
+                }, 3000);
+            }
+        }
+
+        digitarLog();
+    </script>
+</body>
+</html>
